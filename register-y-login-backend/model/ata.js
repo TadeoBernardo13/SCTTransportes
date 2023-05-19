@@ -5,6 +5,7 @@ const AltaVehiculosAdicionalesSchema = new Schema({
   fechaRecepcion: { type: Date, required: true },
   nombrePermisionario: { type: String, required: true },
   nombreATA: { type: String, required: true },
+  estado_P: { type: String, required: true },
 });
 
 module.exports = model(

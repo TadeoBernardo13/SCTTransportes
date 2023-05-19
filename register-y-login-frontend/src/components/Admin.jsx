@@ -1,14 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Dashboard from "./Dashboard";
 
 import "../css/dashboard.css";
 
 const Admin = () => {
   const [name, setName] = useState();
-
-  const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
 

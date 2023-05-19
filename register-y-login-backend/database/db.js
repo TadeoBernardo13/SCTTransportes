@@ -9,4 +9,4 @@ const db = async () => {
     .catch((error) => console.error(error));
 };
 
-module.exports = db
+module.exports = db;

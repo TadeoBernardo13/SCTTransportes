@@ -13,46 +13,25 @@ export const ProductProvider = ({ children }) => {
 
   const getProducts = async () => {
     const res = await getProductsRequests();
-    console.log(res);
+    console.log(res)
   };
 
-  /* const createProduct = async (product) => {
-    try {
-      const res = await createProductsRequests(product);
-      setProducts([...products, res.data]);
-    } catch (error) {
-      console.log(error);
-    }
-  }; */
-
-  /* const deleteProduct = async (id) => {
-    await deleteProductRequest(id);
-    setProducts(products.filter((product) => product._id !== id));
-  }; */
-
-  /* const getProduct = async (id) => {
-    const res = await getProductRequests(id);
-    return res.data;
-  }; */
-
-  /* const updateProduct = async (id, product) => {
-    const res = await updateProductRequests(id, product);
-    setProducts(
-      products.map((product) => (product._id === id ? res.data : product))
-    );
-  }; */
-  /* useEffect(() => {
+  const createProduct = async (product) => {
+    //const res = await createProductsRequests(product);
+    console.log(product);
+  };
+  useEffect(() => {
     getProducts();
-  }, []); */
+  }, []);
   return (
     <ProductContext.Provider
       value={{
         products,
-        getProducts/* ,
-        createProduct,
+        getProducts,
+        createProduct /*
         deleteProduct,
         getProduct,
-        updateProduct, */
+        updateProduct, */,
       }}
     >
       {children}

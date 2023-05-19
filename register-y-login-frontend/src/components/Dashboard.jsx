@@ -134,7 +134,12 @@ function Dashboard() {
           </li> */}
           <li className="p-2">
             <NavLink to="/dashboard" className="text-decoration-none nav__link">
-              Dashboard
+              Ver Reportes en proceso
+            </NavLink>
+          </li>
+          <li className="p-2">
+            <NavLink to="/pendientes" className="text-decoration-none nav__link">
+              Ver Reportes pendientes
             </NavLink>
           </li>
         </ul>
@@ -142,7 +147,7 @@ function Dashboard() {
         <ul className="list-unstyled">
           <li className="">
             <NavLink to="/" className="text-decoration-none nav__link">
-              Icon Log Out
+              Salir
             </NavLink>
           </li>
         </ul>

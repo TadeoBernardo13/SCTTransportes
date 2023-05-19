@@ -1,19 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import Dashboard from "../../components/Dashboard";
 
 import "../../css/dashboard.css";
+import styles from "../../components/styles.module.scss";
 
 function ATAPrivadoCargaERRDP() {
-  const [textareaEnabled, setTextareaEnabled] = useState(false);
-  const [CheckBoxDisabled, setCheckBoxDisabled] = useState(true);
-
-  const handleCheckboxChange = () => {
-    setTextareaEnabled(!textareaEnabled);
-    setCheckBoxDisabled(!CheckBoxDisabled);
-  };
+  const navigate = useNavigate();
+  const [mensaje, setMensaje] = useState();
 
   const [inputs, setInputs] = useState({
     noFolioSiaf: "",
@@ -21,6 +18,7 @@ function ATAPrivadoCargaERRDP() {
     nombrePermisionario: "",
     nombreATA:
       "ALTA DE VEHICULOS ADICIONALES AL PERMISO PARA EL SERVICIO DE TRANSPORTE PRIVADO DE CARGA ESPECIALIZADA DE MATERIALES, RESIDUOS, REMANENTES Y DESECHOS PELIGROSOS",
+    estado_P: "EN PROCESO",
   });
   const { noFolioSiaf, fechaRecepcion, nombrePermisionario, nombreATA } =
     inputs;
@@ -42,16 +40,23 @@ function ATAPrivadoCargaERRDP() {
       await axios
         .post("http://localhost:4000/altavehiculosadicionales", ATA)
         .then((res) => {
+          const { data } = res;
+          setMensaje(data.mensaje);
           setInputs({
             fechaRecepcion: "",
             noFolioSiaf: "",
             nombrePermisionario: "",
             nombreATA: "",
           });
+          setTimeout(() => {
+            setMensaje("");
+          }, 1500);
         })
         .catch((error) => {
           console.error(error);
         });
+    } else {
+      alert("Favor de llenar todos lo campos");
     }
   };
   return (
@@ -67,7 +72,7 @@ function ATAPrivadoCargaERRDP() {
           <form onSubmit={(e) => onSubmit(e)}>
             <div className="d-flex justify-content-evenly">
               <div>
-                <label htmlFor="numFolio">No. Folio SIAF:</label>
+                <label htmlFor="numFolio">* No. Folio SIAF:</label>
                 <input
                   onChange={(e) => HandleChange(e)}
                   name="noFolioSiaf"
@@ -79,19 +84,7 @@ function ATAPrivadoCargaERRDP() {
                 />
               </div>
               <div>
-                <label htmlFor="fechaRecepcion">Fecha de Recepcion:</label>
-                <input
-                  onChange={(e) => HandleChange(e)}
-                  value={fechaRecepcion}
-                  name="fechaRecepcion"
-                  id="fechaRecepcion"
-                  type="date"
-                  placeholder="Fecha de Recepcion"
-                  autoComplete="off"
-                />
-              </div>
-              <div>
-                <label htmlFor="nombrePermisionario">Permisionario:</label>
+                <label htmlFor="nombrePermisionario">* Permisionario:</label>
                 <input
                   onChange={(e) => HandleChange(e)}
                   name="nombrePermisionario"
@@ -102,48 +95,22 @@ function ATAPrivadoCargaERRDP() {
                   autoComplete="off"
                 />
               </div>
-            </div>
-            <div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault1"
-                  disabled={!CheckBoxDisabled}
-                />
-                <label className="form-check-label" for="flexRadioDefault1">
-                  Tiene todo
-                </label>
-              </div>
-              <div className="form-check">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  name="flexRadioDefault"
-                  id="flexRadioDefault2"
-                  checked={textareaEnabled}
-                  onChange={handleCheckboxChange}
-                />
-                <label className="form-check-label" for="flexRadioDefault2">
-                  No cuenta con todo
-                </label>
-              </div>
-              <div className="mb-3">
-                <label for="exampleFormControlTextarea1" className="form-label">
-                  Escriba una justificacion o documentacion faltante
-                </label>
-                <textarea
-                  className="form-control"
-                  id="exampleFormControlTextarea1"
-                  rows="3"
-                  as="textarea"
-                  disabled={!textareaEnabled}
-                ></textarea>
-              </div>
-              <button type="submit">Registrar</button>
+              <button type="submit" className="btn btn-info">Registrar</button>
             </div>
           </form>
+
+          <hr />
+          <button
+            onClick={() =>
+              navigate(
+                `/altavehiculoadicionalprivadocargaespecilizadaresiduosremanentesdesechospeligrosos_p`
+              )
+            }
+            className="btn btn-secondary mt-4"
+          >
+            Registrar en pendientes
+          </button>
+          {mensaje && <div className={styles.toast}>{mensaje}</div>}
         </div>
       </div>
     </>

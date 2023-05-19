@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon App.js"
+    "dev": "nodemon App.js",
+    "build":"npm install --prefix register-y-login-frontend && npm run build --prefix register-y-login-frontend",
+    "start": "node server"
   },
   "keywords": [],
   "author": "",

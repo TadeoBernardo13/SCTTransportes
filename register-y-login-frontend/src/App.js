@@ -6,6 +6,7 @@ import Register from "./components/Register";
 import Admin from "./components/Admin";
 
 import DashboardView from "./components/DashboardView";
+import PendientesView from "./components/PendientesView";
 
 import ATAFederalCargaEResiduos from "./pages/altavehiculos/ATAFederalCargaEMRP";
 import ATAFederalCargaGeneral from "./pages/altavehiculos/ATAFederalCargaGeneral";
@@ -17,6 +18,14 @@ import AltaTransportePrivadoPersonas from "./pages/altavehiculos/ATAPrivadoPerso
 
 import EPSFederalPasaje from "./pages/altapermisos/EPSFederalPasaje";
 import EPSFederalTurismo from "./pages/altapermisos/EPSFederalTurismo";
+
+import ATAFederalCargaEResiduosP from "./pages/altavehiculos/ATAFederalCargaEMRP_P";
+import ATAFederalCargaGeneralP from "./pages/altavehiculos/ATAFederalCargaGeneral_P";
+import ATAFederalPasajeP from "./pages/altavehiculos/ATAFederalPasaje_P";
+import ATAFederalTurismoP from "./pages/altavehiculos/ATAFederalTurismo_P";
+import ATAPrivadoCargaEMRRDPp from "./pages/altavehiculos/ATAPrivadoCargaEMRRDP_P";
+import ATAPrivadoCargaGeneralP from "./pages/altavehiculos/ATAPrivadoCargaGeneral_P";
+import ATAPrivadoPersonasP from "./pages/altavehiculos/ATAPrivadoPersonas_P";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -67,6 +76,36 @@ const App = () => {
           element={<EPSFederalTurismo />}
         />
         <Route path="/dashboard" element={<DashboardView />} />
+        <Route path="/pendientes" element={<PendientesView />} />
+
+        <Route
+          path="/altavehiculoadicionalcargaespecializadaresiduospeligrosos_p"
+          element={<ATAFederalCargaEResiduosP />}
+        />
+        <Route
+          path="/altavehiculoadicionalcargageneral_p"
+          element={<ATAFederalCargaGeneralP />}
+        />
+        <Route
+          path="/altavehiculoadicionalfederalpasaje_p"
+          element={<ATAFederalPasajeP />}
+        />
+        <Route
+          path="/altavehiculoadicionalfederalturismo_p"
+          element={<ATAFederalTurismoP />}
+        />
+        <Route
+          path="/altavehiculoadicionalprivadocargaespecilizadaresiduosremanentesdesechospeligrosos_p"
+          element={<ATAPrivadoCargaEMRRDPp />}
+        />
+        <Route
+          path="/altavehiculoadicionalprivadocargageneral_p"
+          element={<ATAPrivadoCargaGeneralP />}
+        />
+        <Route
+          path="/altavehiculoadicionalprivadopersonas_p"
+          element={<ATAPrivadoPersonasP />}
+        />
       </Routes>
     </BrowserRouter>
   );

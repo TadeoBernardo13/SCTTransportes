@@ -21,7 +21,6 @@ const Register = () => {
   const HandleChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
   };
-
   const onSubmit = async (e) => {
     e.preventDefault();
     if (nombre !== "" && contraseña !== "" && correo !== "") {
@@ -51,6 +50,8 @@ const Register = () => {
         });
 
       setLoading(false);
+    } else {
+      alert("Favor de llenar todos los campos");
     }
   };
 
@@ -121,6 +122,7 @@ const Register = () => {
                 type="password"
                 placeholder="Contraseña..."
                 autoComplete="off"
+                minlength="8"
               />
             </div>
             <svg
