@@ -20,8 +20,13 @@ function ATAPrivadoCargaGeneral() {
       "ALTA DE VEHICULOS ADICIONALES AL PERMISO PARA EL SERVICIO DE TRANSPORTE PRIVADO DE DE CARGA GENERAL",
     estado_P: "EN PROCESO",
   });
-  const { noFolioSiaf, fechaRecepcion, nombrePermisionario, nombreATA } =
-    inputs;
+  const {
+    noFolioSiaf,
+    fechaRecepcion,
+    nombrePermisionario,
+    nombreATA,
+    estado_P,
+  } = inputs;
 
   const HandleChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -35,6 +40,7 @@ function ATAPrivadoCargaGeneral() {
         noFolioSiaf,
         nombrePermisionario,
         nombreATA,
+        estado_P,
       };
 
       await axios
@@ -47,6 +53,7 @@ function ATAPrivadoCargaGeneral() {
             noFolioSiaf: "",
             nombrePermisionario: "",
             nombreATA: "",
+            estado_P: "",
           });
           setTimeout(() => {
             setMensaje("");
@@ -94,7 +101,9 @@ function ATAPrivadoCargaGeneral() {
                   autoComplete="off"
                 />
               </div>
-              <button type="submit" className="btn btn-info">Registrar</button>
+              <button type="submit" className="btn btn-info">
+                Registrar
+              </button>
             </div>
           </form>
 
@@ -103,7 +112,8 @@ function ATAPrivadoCargaGeneral() {
             onClick={() =>
               navigate(`/altavehiculoadicionalprivadocargageneral_p`)
             }
-          className="btn btn-secondary mt-4">
+            className="btn btn-secondary mt-4"
+          >
             Registrar en pendientes
           </button>
           {mensaje && <div className={styles.toast}>{mensaje}</div>}

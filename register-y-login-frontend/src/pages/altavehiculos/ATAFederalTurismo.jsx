@@ -20,8 +20,13 @@ function AltaTransporteFederalTurismo() {
       "ALTA DE VEHICULOS ADICIONALES AL PERMISO PARA EL SERVICIO DE AUTOTRANSPORTE FEDERAL DE TURISMO",
     estado_P: "EN PROCESO",
   });
-  const { noFolioSiaf, fechaRecepcion, nombrePermisionario, nombreATA } =
-    inputs;
+  const {
+    noFolioSiaf,
+    fechaRecepcion,
+    nombrePermisionario,
+    nombreATA,
+    estado_P,
+  } = inputs;
 
   const HandleChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -35,6 +40,7 @@ function AltaTransporteFederalTurismo() {
         noFolioSiaf,
         nombrePermisionario,
         nombreATA,
+        estado_P,
       };
 
       await axios
@@ -47,6 +53,7 @@ function AltaTransporteFederalTurismo() {
             noFolioSiaf: "",
             nombrePermisionario: "",
             nombreATA: "",
+            estado_P: "",
           });
           setTimeout(() => {
             setMensaje("");
@@ -94,7 +101,9 @@ function AltaTransporteFederalTurismo() {
                   autoComplete="off"
                 />
               </div>
-              <button type="submit" className="btn btn-info">Registrar</button>
+              <button type="submit" className="btn btn-info">
+                Registrar
+              </button>
             </div>
           </form>
 

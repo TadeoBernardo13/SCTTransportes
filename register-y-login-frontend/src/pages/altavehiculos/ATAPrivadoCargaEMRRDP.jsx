@@ -20,8 +20,13 @@ function ATAPrivadoCargaERRDP() {
       "ALTA DE VEHICULOS ADICIONALES AL PERMISO PARA EL SERVICIO DE TRANSPORTE PRIVADO DE CARGA ESPECIALIZADA DE MATERIALES, RESIDUOS, REMANENTES Y DESECHOS PELIGROSOS",
     estado_P: "EN PROCESO",
   });
-  const { noFolioSiaf, fechaRecepcion, nombrePermisionario, nombreATA } =
-    inputs;
+  const {
+    noFolioSiaf,
+    fechaRecepcion,
+    nombrePermisionario,
+    nombreATA,
+    estado_P,
+  } = inputs;
 
   const HandleChange = (e) => {
     setInputs({ ...inputs, [e.target.name]: e.target.value });
@@ -35,6 +40,7 @@ function ATAPrivadoCargaERRDP() {
         noFolioSiaf,
         nombrePermisionario,
         nombreATA,
+        estado_P,
       };
 
       await axios
@@ -47,6 +53,7 @@ function ATAPrivadoCargaERRDP() {
             noFolioSiaf: "",
             nombrePermisionario: "",
             nombreATA: "",
+            estado_P: "",
           });
           setTimeout(() => {
             setMensaje("");
@@ -95,7 +102,9 @@ function ATAPrivadoCargaERRDP() {
                   autoComplete="off"
                 />
               </div>
-              <button type="submit" className="btn btn-info">Registrar</button>
+              <button type="submit" className="btn btn-info">
+                Registrar
+              </button>
             </div>
           </form>
 

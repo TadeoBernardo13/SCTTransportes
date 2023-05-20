@@ -43,7 +43,7 @@ function DashboardView() {
                     <td>{d.nombrePermisionario}</td>
                     <td>{d.nombreATA}</td>
                     <td>{d.fechaRecepcion}</td>
-                    <td>{d.estado}</td>
+                    <td>{d.estado_P}</td>
                     <td>
                       <button onClick={(e) => deletePost(d._id, e)} className="btn btn-info">
                         Terminado

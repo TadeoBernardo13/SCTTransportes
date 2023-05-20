@@ -21,7 +21,7 @@ function ATAFederalCargaEResiduos() {
     estado_P: "EN PROCESO",
   });
 
-  const { noFolioSiaf, fechaRecepcion, nombrePermisionario, nombreATA } =
+  const { noFolioSiaf, fechaRecepcion, nombrePermisionario, nombreATA, estado_P } =
     inputs;
 
   const HandleChange = (e) => {
@@ -36,6 +36,7 @@ function ATAFederalCargaEResiduos() {
         noFolioSiaf,
         nombrePermisionario,
         nombreATA,
+        estado_P,
       };
 
       await axios
@@ -48,6 +49,7 @@ function ATAFederalCargaEResiduos() {
             noFolioSiaf: "",
             nombrePermisionario: "",
             nombreATA: "",
+            estado_P: "",
           });
           setTimeout(() => {
             setMensaje("");
@@ -98,7 +100,9 @@ function ATAFederalCargaEResiduos() {
                   autoComplete="off"
                 />
               </div>
-              <button type="submit" className="btn btn-info">Registrar</button>
+              <button type="submit" className="btn btn-info">
+                Registrar
+              </button>
             </div>
           </form>
 
@@ -109,7 +113,8 @@ function ATAFederalCargaEResiduos() {
                 `/altavehiculoadicionalcargaespecializadaresiduospeligrosos_p`
               )
             }
-          className="btn btn-secondary mt-4">
+            className="btn btn-secondary mt-4"
+          >
             Registrar en pendientes
           </button>
           {mensaje && <div className={styles.toast}>{mensaje}</div>}
